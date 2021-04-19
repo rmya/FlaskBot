@@ -1,0 +1,185 @@
+.body {
+  background-color: #eee
+}
+.p{
+	display:inline-block;
+}
+.div {
+	display: inline-block;
+	width: 480px;
+}
+.chat-btn {
+  position: absolute;
+  right: 14px;
+  bottom: 30px;
+  cursor: pointer
+}
+
+.chat-btn .close {
+  display: none
+}
+
+.chat-btn i {
+  transition: all 0.9s ease
+}
+
+#check:checked~.chat-btn i {
+  display: block;
+  pointer-events: auto;
+  transform: rotate(180deg)
+}
+
+#check:checked~.chat-btn .comment {
+  display: none
+}
+
+.chat-btn i {
+  font-size: 22px;
+  color: #fff !important
+}
+
+.chat-btn {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  background-color: #189999;
+  color: #fff;
+  font-size: 22px;
+  border: none
+}
+
+.wrapper {
+  position: absolute;
+  right: 20px;
+  bottom: 100px;
+  width: 500px;
+  background-color: #fff;
+  border-radius: 5px;
+  opacity: 0;
+  transition: all 0.4s
+}
+
+#check:checked~.wrapper {
+  opacity: 1
+}
+
+.header {
+  padding: 1px;
+  background-color: #189999;
+  border-radius: 5px 5px 0px 0px;
+  margin-bottom: 10px;
+  color: #fff
+}
+
+.chat-form {
+  padding: 15px
+}
+
+.form-control:focus,
+.btn:focus {
+  box-shadow: none
+}
+
+.btn,
+.btn:focus,
+.btn:hover {
+  background-color: #189999;
+  border:#1FD8D8;
+}
+
+#check {
+  display: none !important
+}
+
+/***************/
+
+#chatbox {
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+	margin-top: 20px;
+}
+#userInput {
+	margin-left: auto;
+	margin-right: auto;
+	width: 40%;
+	margin-top: 60px;
+}
+#textInput {
+	width: 90%;
+	border: none;
+	border-bottom: 3px solid black;
+	font-family: monospace;
+	font-size: 17px;
+}
+.userText {
+	color: black;
+	font-family: monospace;
+	font-size: 17px;
+	text-align: right;
+	line-height: 30px;
+}
+.userText span {
+	background-color: #bbc2ae;
+	padding: 10px;
+	border-radius: 2px;
+}
+.botText {
+	color: black;
+	background-color: #189999;
+	font-family: monospace;
+	font-size: 17px;
+	text-align: left;
+	line-height: 30px;
+}
+.botText span {
+	background-color: #189999;
+	padding: 10px;
+	border-radius: 2px;
+}
+.botText p {
+	background-color: #189999;
+	padding: 10px;
+	border-radius: 2px;
+}
+#tidbit {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 300px;
+}
+.boxed {
+	right: 30 px;
+	width : 400 px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 98%;  /*before 78*/
+	margin-top: 20px;
+	
+	border: 1px solid sandybrown;
+}
+.msgArea{
+	right: 30 px;
+	width : 400 px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 98%; 
+	
+}
+.box {
+	border: 2px solid black;
+}
+
+/*data time picker*/
+.label {
+	display: block;
+	font: 1rem 'Fira Sans', sans-serif;
+}
+
+.input, 
+.label {
+	margin: .4rem 0;
+}

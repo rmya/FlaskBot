@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>Flask Bot</title>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pop-style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css'>
+    <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js'></script>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  </head>
+
+<body>
+
+<input type="checkbox" id="check"> 
+<label class="chat-btn" for="check"> 
+  <i class="fa fa-commenting-o comment"></i> 
+  <i class="fa fa-close close"></i> 
+</label>
+<div class="wrapper">
+    <div class="header">
+      <center><h4>Flask Bot</h4></center> 
+    </div>
+      <div class="box"></div>
+        <div class="boxed">
+          <div clas="msgArea">
+            <div id="chatbox">
+              <div class="botText">
+                <p>Hi! I'm FlaskBot ChatBot</p>
+              </div>
+              </div>
+             <div id="userInput">
+              <input id="textInput" type="text" name="msg" placeholder="Message" />
+              </div>
+           <div class="btn-send" onclick="getBotResponse()">Send</div>
+
+
+          </div>
+
+        </div>
+  <!--</form>  -->
+
+</body>
+
+<script>
+
+var selectDate;
+
+function datepic(){
+  $( "#datepicker" ).datepicker({ dateFormat: "yy-mm-dd"});
+  $( "#datepicker").on("change",function() {
+    selected = $(this).val();
+    //console.log(selected);
+   // window.selectDate = selected;
+    //getBotResponse(window.selectDate)
+  if(selected != 0){
+    console.log(selected);
+    var userText = selected
+    var userHtml = '<p class="userText"><span>' + selected + "</span></p>";
+    console.log(userHtml)
+
+    $("#chatbox").append(userHtml);
+    document
+      .getElementById("userInput")
+      .scrollIntoView({ block: "start", behavior: "smooth" });
+
+    $.get("/get", { msg: selected}).done(function(data) {
+    
+    var botHtml = '<div class="botText"><p>' + data + "</p></div>";
+    console.log(botHtml);
+    $("#chatbox").append(botHtml);
+    document
+      .getElementById("userInput")
+      .scrollIntoView({ block: "start", behavior: "smooth" })
+    });
+
+    } 
+
+})
+}//end of datepic()
+
+function getBotResponse() {
+
+  var rawText = $("#textInput").val();
+  var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
+  console.log(userHtml)
+  $("#textInput").val("");
+  $("#chatbox").append(userHtml);
+  document
+    .getElementById("userInput")
+    .scrollIntoView({ block: "start", behavior: "smooth" });
+
+  $.get("/get", { msg: rawText }).done(function(data) {
+
+    var botHtml = '<div class="botText"><p>' + data + "</p></div>";
+    console.log(botHtml);
+    $("#chatbox").append(botHtml);
+    document
+      .getElementById("userInput")
+      .scrollIntoView({ block: "start", behavior: "smooth" })
+  });
+
+  
+
+}//end getResponse()
+
+
+  
+  $("#textInput").keypress(function(e) {
+    if (e.which == 13) {
+    getBotResponse();
+    }
+    });
+
+
+
+</script>
+
+</html>
