@@ -1,4 +1,2 @@
 # FlaskBot
 
-
-* spagetti code :(
